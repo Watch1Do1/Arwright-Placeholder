@@ -5,6 +5,7 @@ import { createServer as createViteServer } from 'vite';
 import nodemailer from 'nodemailer';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
+import ws from 'ws';
 
 dotenv.config();
 
@@ -41,7 +42,14 @@ async function startServer() {
     // Sanitize URL: Remove trailing slash and /rest/v1 if present
     url = url.replace(/\/$/, '').replace(/\/rest\/v1$/, '');
     
-    return createClient(url, key);
+    return createClient(url, key, {
+      auth: {
+        persistSession: false,
+      },
+      realtime: {
+        transport: ws as any,
+      },
+    });
   };
 
   // API Endpoint for Pilot Inquiries
