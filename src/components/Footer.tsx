@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="space-y-4 text-center md:text-left">
           <div className="flex items-center justify-center md:justify-start gap-3">
-            <img src="/logo.png" alt="Arwright Logo" className="w-6 h-6 object-contain" />
+            <img src="/logo.PNG" alt="Arwright Logo" className="w-6 h-6 object-contain" />
             <span className="font-serif text-xl font-semibold text-ink">Arwright</span>
           </div>
           <p className="text-xs text-ink/40 max-w-xs">

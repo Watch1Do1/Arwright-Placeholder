@@ -9,7 +9,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-paper/80 backdrop-blur-md border-b border-ink/5"
     >
       <a href="#" className="flex items-center gap-3">
-        <img src="/logo.png" alt="Arwright Logo" className="w-8 h-8 object-contain" />
+        <img src="/logo.PNG" alt="Arwright Logo" className="w-8 h-8 object-contain" />
         <span className="font-serif text-2xl font-semibold tracking-tight text-ink">Arwright</span>
       </a>
       
