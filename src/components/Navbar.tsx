@@ -20,12 +20,22 @@ export default function Navbar() {
         <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
       </div>
 
-      <a 
-        href="#contact"
-        className="px-5 py-2 text-xs font-medium uppercase tracking-widest bg-accent text-paper rounded-full border border-accent hover:bg-transparent hover:text-accent transition-all duration-300"
-      >
-        Inquire
-      </a>
+      <div className="flex items-center gap-2 sm:gap-4">
+        <a 
+          href="https://app.arwrightlearning.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-5 py-2 text-xs font-medium uppercase tracking-widest bg-ink text-paper rounded-full border border-ink hover:bg-transparent hover:text-ink transition-all duration-300"
+        >
+          Enter App
+        </a>
+        <a 
+          href="#contact"
+          className="hidden sm:block px-5 py-2 text-xs font-medium uppercase tracking-widest bg-accent text-paper rounded-full border border-accent hover:bg-transparent hover:text-accent transition-all duration-300"
+        >
+          Inquire
+        </a>
+      </div>
     </motion.nav>
   );
 }

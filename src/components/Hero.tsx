@@ -44,14 +44,22 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
         >
           <a 
+            href="https://app.arwrightlearning.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-8 py-4 bg-ink text-paper rounded-xl font-medium text-sm hover:scale-105 transition-transform duration-300 text-center"
+          >
+            Enter App
+          </a>
+          <a 
             href="#contact"
             className="w-full sm:w-auto px-8 py-4 bg-accent text-paper rounded-xl font-medium text-sm hover:scale-105 transition-transform duration-300 shadow-xl shadow-accent/10"
           >
-            Bring Arwright to your school
+            Pilot Program
           </a>
           <a 
             href="#features"
-            className="w-full sm:w-auto px-8 py-4 border border-ink/10 text-ink rounded-xl font-medium text-sm hover:bg-ink/5 transition-colors"
+            className="w-full sm:w-auto px-8 py-4 bg-secondary/10 text-secondary border border-secondary/20 rounded-xl font-medium text-sm hover:bg-secondary/20 transition-all duration-300 text-center"
           >
             Learn more
           </a>

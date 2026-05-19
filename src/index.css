@@ -9,6 +9,7 @@
   --color-ink: #1A1A1A;
   --color-brand-blue: #57B7FF;
   --color-accent: #2563EB;
+  --color-secondary: #64748B;
 }
 
 @layer base {
