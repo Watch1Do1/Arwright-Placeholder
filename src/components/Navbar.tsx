@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { Feather } from 'lucide-react';
 
 export default function Navbar() {
   return (

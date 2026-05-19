@@ -1,5 +1,3 @@
-import { Feather } from 'lucide-react';
-
 export default function Footer() {
   return (
     <footer className="py-12 px-6 bg-paper border-t border-ink/5">
