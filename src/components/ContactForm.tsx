@@ -1,16 +1,19 @@
 import { useState, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Send, CheckCircle2 } from 'lucide-react';
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (loading) return;
     
     setLoading(true);
+    setError(null);
     const formData = new FormData(e.target as HTMLFormElement);
     const data = {
       name: formData.get('name'),
@@ -28,13 +31,17 @@ export default function ContactForm() {
 
       if (response.ok) {
         setSubmitted(true);
+        setLoading(false);
       } else {
-        alert('Something went wrong. Please try again.');
+        const result = await response.json().catch(() => null);
+        setError(
+          result?.error ||
+            "We couldn't send your inquiry. Please email hello@arwrightlearning.com."
+        );
         setLoading(false);
       }
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('Could not reach the server. Please try again.');
+    } catch {
+      setError('Could not reach the server. Please check your connection and try again.');
       setLoading(false);
     }
   };
@@ -79,7 +86,8 @@ export default function ContactForm() {
                 <input 
                   required
                   name="name"
-                  type="text" 
+                  type="text"
+                  maxLength={200}
                   className="w-full px-4 py-3 bg-stone-50 border border-ink/5 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent transition-all"
                   placeholder="Jane Doe"
                 />
@@ -89,7 +97,8 @@ export default function ContactForm() {
                 <input 
                   required
                   name="email"
-                  type="email" 
+                  type="email"
+                  maxLength={254}
                   className="w-full px-4 py-3 bg-stone-50 border border-ink/5 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent transition-all"
                   placeholder="j.doe@school.edu"
                 />
@@ -101,7 +110,8 @@ export default function ContactForm() {
               <input 
                 required
                 name="school"
-                type="text" 
+                type="text"
+                maxLength={200}
                 className="w-full px-4 py-3 bg-stone-50 border border-ink/5 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent transition-all"
                 placeholder="Arwright Academy"
               />
@@ -113,10 +123,17 @@ export default function ContactForm() {
                 required
                 name="message"
                 rows={4}
+                maxLength={5000}
                 className="w-full px-4 py-3 bg-stone-50 border border-ink/5 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent transition-all resize-none"
                 placeholder="Tell us about your school's writing goals..."
               />
             </div>
+
+            {error && (
+              <p role="alert" className="text-sm text-center text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                {error}
+              </p>
+            )}
 
             <button 
               type="submit"
@@ -133,7 +150,11 @@ export default function ContactForm() {
               )}
             </button>
             <p className="text-center text-[10px] text-ink/30 italic font-serif">
-              By submitting, you agree to our academic privacy standard.
+              By submitting, you agree to our{' '}
+              <Link to="/privacy" className="underline underline-offset-4 hover:text-ink transition-colors">
+                Privacy Policy
+              </Link>
+              .
             </p>
           </motion.form>
         )}

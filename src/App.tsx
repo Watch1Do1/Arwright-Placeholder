@@ -11,6 +11,7 @@ import Features from './components/Features';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import NotFound from './components/NotFound';
+import LegalPage from './components/LegalPage';
 
 function HomePage() {
   return (
@@ -32,6 +33,8 @@ export default function App() {
       <div className="bg-paper min-h-screen selection:bg-accent selection:text-paper">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/privacy" element={<LegalPage title="Privacy Policy" />} />
+          <Route path="/terms" element={<LegalPage title="Terms of Service" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Analytics />

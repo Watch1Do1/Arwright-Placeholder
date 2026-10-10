@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="py-12 px-6 bg-paper border-t border-ink/5">
@@ -13,14 +15,14 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-8 text-[10px] uppercase tracking-widest font-semibold text-ink/60">
-          <a href="#" className="hover:text-brand-blue transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-brand-blue transition-colors">Terms of Service</a>
+          <Link to="/privacy" className="hover:text-brand-blue transition-colors">Privacy Policy</Link>
+          <Link to="/terms" className="hover:text-brand-blue transition-colors">Terms of Service</Link>
           <a href="#" className="hover:text-brand-blue transition-colors">Accessibility</a>
           <a href="#" className="hover:text-brand-blue transition-colors">Support</a>
         </div>
 
         <div className="text-[10px] uppercase tracking-widest font-semibold text-ink/30">
-          © {new Date().getFullYear()} Arwright Inc.
+          © {new Date().getFullYear()} Arwright, LLC
         </div>
       </div>
     </footer>

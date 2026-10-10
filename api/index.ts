@@ -7,7 +7,7 @@ import ws from 'ws';
 dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '20kb' }));
 
 // Initialize Nodemailer Transporter lazily
 const getTransporter = () => {
@@ -50,15 +50,51 @@ const getSupabase = () => {
   });
 };
 
+// Escape user-provided text before placing it in the notification email's HTML
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+// Remove line breaks and control characters (used for the email subject line)
+const singleLine = (value: string) => value.replace(/[\u0000-\u001F\u007F]+/g, ' ').trim();
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const INVALID_INPUT_MESSAGE = 'Please check the form fields and try again.';
+const SEND_FAILED_MESSAGE =
+  "We couldn't send your inquiry. Please email hello@arwrightlearning.com.";
+
+// Returns the trimmed string, or null if it is not a string or is too long / empty when required
+const readField = (value: unknown, maxLength: number, required: boolean): string | null => {
+  if (value === undefined || value === null) return required ? null : '';
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim();
+  if (trimmed.length > maxLength) return null;
+  if (required && trimmed.length === 0) return null;
+  return trimmed;
+};
+
 // API Endpoint for Pilot Inquiries
 app.post('/api/inquiry', async (req, res) => {
-  const { name, email, school, message } = req.body;
-  console.log(`[API] Received inquiry from: ${email}`);
+  const body = (req.body && typeof req.body === 'object') ? req.body : {};
+  const name = readField(body.name, 200, true);
+  const email = readField(body.email, 254, true);
+  const school = readField(body.school, 200, true);
+  const message = readField(body.message, 5000, false);
+
+  if (name === null || email === null || school === null || message === null || !EMAIL_PATTERN.test(email)) {
+    return res.status(400).json({ success: false, error: INVALID_INPUT_MESSAGE });
+  }
+
+  console.log('[API] Received inquiry');
 
   const results = {
     supabase: 'skipped',
     email: 'skipped',
-    errors: [] as string[]
   };
 
   try {
@@ -70,9 +106,8 @@ app.post('/api/inquiry', async (req, res) => {
         .insert([{ name, email, school, message, type: 'pilot_program' }]);
       
       if (error) {
-        console.error('Supabase Error:', error);
+        console.error('[API] Supabase insert failed', { code: error.code });
         results.supabase = 'error';
-        results.errors.push(`Supabase: ${error.message}`);
       } else {
         results.supabase = 'success';
       }
@@ -87,50 +122,46 @@ app.post('/api/inquiry', async (req, res) => {
         await transporter.sendMail({
           from: `"Arwright Platform" <${process.env.SMTP_USER}>`,
           to: 'hello@arwrightlearning.com', 
-          subject: `New Arwright Pilot Inquiry: ${school}`,
+          subject: `New Arwright Pilot Inquiry: ${singleLine(school)}`,
           text: `New Inquiry from ${name}\nEmail: ${email}\nSchool: ${school}\nMessage: ${message}`,
           html: `
             <div style="font-family: sans-serif; max-width: 600px; line-height: 1.6;">
-              <h2 style="color: #1A1A1A;">New Inquiry from ${name}</h2>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>School:</strong> ${school}</p>
+              <h2 style="color: #1A1A1A;">New Inquiry from ${escapeHtml(name)}</h2>
+              <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+              <p><strong>School:</strong> ${escapeHtml(school)}</p>
               <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 20px;">
                 <p><strong>Message:</strong></p>
-                <p>${message}</p>
+                <p>${escapeHtml(message).replace(/\r?\n/g, '<br>')}</p>
               </div>
             </div>
           `,
         });
         results.email = 'success';
       } catch (mailError: any) {
-        console.error('Mail Error:', mailError);
+        console.error('[API] Email send failed', {
+          code: mailError?.code,
+          responseCode: mailError?.responseCode,
+        });
         results.email = 'error';
-        results.errors.push(`Email: ${mailError.message}`);
       }
     } else {
       results.email = 'not_configured';
     }
 
-    res.status(200).json({ success: results.errors.length === 0, results });
-  } catch (error: any) {
-    console.error('Global Error:', error);
-    res.status(500).json({ error: 'Internal Server Error', message: error.message });
-  }
-});
-
-// Debug endpoint to check env vars (safe check - only shows existence)
-app.get('/api/check', (req, res) => {
-  res.json({
-    env: {
-      NODE_ENV: process.env.NODE_ENV,
-      VERCEL: process.env.VERCEL,
-      HAS_SUPABASE_URL: !!process.env.SUPABASE_URL,
-      HAS_SUPABASE_KEY: !!process.env.SUPABASE_ANON_KEY,
-      HAS_SMTP_HOST: !!process.env.SMTP_HOST,
-      HAS_SMTP_USER: !!process.env.SMTP_USER,
-      HAS_SMTP_PASS: !!process.env.SMTP_PASS,
+    // Only report success if the inquiry was actually saved or emailed
+    if (results.supabase === 'success' || results.email === 'success') {
+      return res.status(200).json({ success: true });
     }
-  });
+
+    console.error('[API] Inquiry was neither saved nor emailed', {
+      supabase: results.supabase,
+      email: results.email,
+    });
+    return res.status(502).json({ success: false, error: SEND_FAILED_MESSAGE });
+  } catch (error: any) {
+    console.error('[API] Unexpected error', { name: error?.name });
+    return res.status(500).json({ success: false, error: SEND_FAILED_MESSAGE });
+  }
 });
 
 export default app;
