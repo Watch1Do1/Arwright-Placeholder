@@ -22,11 +22,9 @@ export default function Navbar() {
       <div className="flex items-center gap-2 sm:gap-4">
         <a 
           href="https://app.arwrightlearning.com"
-          target="_blank"
-          rel="noopener noreferrer"
           className="px-5 py-2 text-xs font-medium uppercase tracking-widest bg-ink text-paper rounded-full border border-ink hover:bg-transparent hover:text-ink transition-all duration-300"
         >
-          Enter App
+          Launch App
         </a>
         <a 
           href="#contact"

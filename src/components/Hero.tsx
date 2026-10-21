@@ -45,11 +45,9 @@ export default function Hero() {
         >
           <a 
             href="https://app.arwrightlearning.com"
-            target="_blank"
-            rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-4 bg-ink text-paper rounded-xl font-medium text-sm hover:scale-105 transition-transform duration-300 text-center"
           >
-            Enter App
+            Launch App
           </a>
           <a 
             href="#contact"
