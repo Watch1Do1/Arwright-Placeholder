@@ -1,6 +1,6 @@
 # Arwright
 
-> Arwright is a writing-process platform for high schools that helps students use AI responsibly without losing their own thinking. Instead of writing or rewriting student work, it coaches students and shows teachers how a piece of writing was actually built: drafts, revisions, pastes, and AI coach conversations.
+> Arwright is a writing-process platform for high schools that helps students use AI responsibly without losing their own thinking. Instead of writing or rewriting student work, it coaches students and shows teachers how a piece of writing was actually built: revisions, pasted text, and the questions students asked the AI coach.
 
 ## Who it's for
 - High school teachers in any subject that assigns writing
