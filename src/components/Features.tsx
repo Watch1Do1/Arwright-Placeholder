@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import SeeItInAction from './SeeItInAction';
 import { PenTool, Eye, GraduationCap, ShieldCheck, Zap, History, FileText, Search } from 'lucide-react';
 
 const features = [
@@ -106,6 +107,7 @@ export default function Features() {
             </div>
           </div>
         </div>
+        <SeeItInAction />
       </div>
     </section>
   );
