@@ -24,8 +24,8 @@ const features = [
     iconColor: "bg-stone-500"
   },
   {
-    title: "School-Grade Security",
-    description: "Hierarchy management for Districts, Schools, and Classes. Student privacy and trust at the core.",
+    title: "Privacy-Minded by Design",
+    description: "Teachers see only their own students. Student privacy and trust at the core.",
     icon: ShieldCheck,
     color: "bg-green-50",
     iconColor: "bg-green-500"
@@ -76,7 +76,7 @@ export default function Features() {
               <h4 className="font-medium text-ink flex items-center gap-2">
                 <Zap className="w-4 h-4 text-accent" /> Focus Mode
               </h4>
-              <p className="text-sm text-ink/60 leading-relaxed">A workspace that feels like writing on a page. Supports drafting, revising, and deep reflection.</p>
+              <p className="text-sm text-ink/60 leading-relaxed">A workspace that feels like writing on a page. Students reflect on their own thinking and can see their own growth in Your Writing Journey.</p>
             </div>
             <div className="space-y-4">
               <h4 className="font-medium text-ink flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function Features() {
               <h4 className="font-medium text-ink flex items-center gap-2">
                 <Search className="w-4 h-4 text-accent" /> Writing Insights
               </h4>
-              <p className="text-sm text-ink/60 leading-relaxed">Understand the process: view time spent, revision intensity, and AI consultation moments to give targeted feedback.</p>
+              <p className="text-sm text-ink/60 leading-relaxed">Understand the process with a Writing Process Review. It offers evidence, not verdicts. You make the call and give targeted feedback.</p>
             </div>
           </div>
         </div>

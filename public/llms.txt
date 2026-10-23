@@ -1,9 +1,9 @@
 # Arwright
 
-> Arwright is a writing-process platform for middle and high schools that helps students use AI responsibly without losing their own thinking. Instead of writing or rewriting student work, it coaches students and shows teachers how a piece of writing was actually built: drafts, revisions, pastes, and AI use.
+> Arwright is a writing-process platform for high schools that helps students use AI responsibly without losing their own thinking. Instead of writing or rewriting student work, it coaches students and shows teachers how a piece of writing was actually built: drafts, revisions, pastes, and AI coach conversations.
 
 ## Who it's for
-- Middle and high school teachers in any subject that assigns writing
+- High school teachers in any subject that assigns writing
 - School and district leaders setting AI and academic-integrity policy
 - Students who want to grow as writers and keep a portfolio of their work
 
@@ -11,15 +11,15 @@
 - In-house word processor that captures the writing process
 - AI writing coach that guides students with questions and feedback, not ghostwriting
 - Process replay so teachers can watch how a draft developed
-- Integrity review that flags pasted text and sudden typing bursts
+- Writing Process Review that gives teachers evidence, not verdicts. The teacher makes the call.
+- Students reflect on their own thinking and can see their own growth
 - Classes and assignments for teachers
-- Students can export their work anytime and keep it after graduation
 
 ## Approach
-Arwright focuses on teaching responsible AI use rather than catching students. AI detectors tend to create mistrust; Arwright gives teachers a picture of real student growth.
+Arwright focuses on teaching responsible AI use rather than catching students. AI detectors tend to create mistrust; Arwright gives teachers a picture of real student growth. Our guiding principle: measure the work, not the student.
 
 ## Status
-Early stage. Arwright is preparing for its first free school pilots. A student AI-use research study is being prepared for IRB submission.
+Live and ready for the pilot stage, starting with high schools. A study of how students use AI in writing is being prepared for IRB submission.
 
 ## Links
 - Website: https://arwrightlearning.com

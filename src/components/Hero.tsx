@@ -34,7 +34,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-2xl mx-auto text-lg md:text-xl text-ink/70 font-serif leading-relaxed"
         >
-          Arwright is a school-based writing platform designed to help students develop authentic writing skills in the age of AI. Focusing on <span className="text-ink">how</span> writing is created—not just the final product.
+          Arwright is a writing platform for high schools, designed to help students develop authentic writing skills in the age of AI. See the thinking behind the writing, not just the final product.
         </motion.p>
 
         <motion.div
