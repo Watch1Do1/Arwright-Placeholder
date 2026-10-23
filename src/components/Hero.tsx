@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
+import { SHOW_DEMO_CTA, DEMO_URL, APP_URL } from '../config';
 
 export default function Hero() {
   return (
@@ -43,23 +44,28 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
         >
-          <a 
-            href="https://app.arwrightlearning.com"
-            className="w-full sm:w-auto px-8 py-4 bg-ink text-paper rounded-xl font-medium text-sm hover:scale-105 transition-transform duration-300 text-center"
-          >
-            Launch App
-          </a>
-          <a 
+          {SHOW_DEMO_CTA && (
+            <a
+              href={DEMO_URL}
+              className="w-full sm:w-auto px-8 py-3 bg-ink text-paper rounded-xl hover:scale-105 transition-transform duration-300 text-center"
+            >
+              <span className="block font-medium text-sm">Try the Demo</span>
+              <span className="block text-xs text-paper/60">See Arwright in action</span>
+            </a>
+          )}
+          <a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-4 bg-accent text-paper rounded-xl font-medium text-sm hover:scale-105 transition-transform duration-300 shadow-xl shadow-accent/10"
+            className="w-full sm:w-auto px-8 py-3 bg-accent text-paper rounded-xl hover:scale-105 transition-transform duration-300 shadow-xl shadow-accent/10 text-center"
           >
-            Pilot Program
+            <span className="block font-medium text-sm">Explore a Pilot</span>
+            <span className="block text-xs text-paper/70">See if it fits your school</span>
           </a>
-          <a 
-            href="#features"
-            className="w-full sm:w-auto px-8 py-4 bg-secondary/10 text-secondary border border-secondary/20 rounded-xl font-medium text-sm hover:bg-secondary/20 transition-all duration-300 text-center"
+          <a
+            href={APP_URL}
+            className="w-full sm:w-auto px-8 py-3 bg-secondary/10 text-secondary border border-secondary/20 rounded-xl hover:bg-secondary/20 transition-all duration-300 text-center"
           >
-            Learn more
+            <span className="block font-medium text-sm">Launch App</span>
+            <span className="block text-xs text-secondary/70">Sign in to Arwright</span>
           </a>
         </motion.div>
       </div>
