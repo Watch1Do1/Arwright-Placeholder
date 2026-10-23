@@ -25,7 +25,7 @@ const features = [
   },
   {
     title: "Privacy-Minded by Design",
-    description: "Teachers see only their own students. Student privacy and trust at the core.",
+    description: "For school leaders: a writing-process platform designed for high schools, with clear boundaries around what teachers can see. Teachers see only their own students.",
     icon: ShieldCheck,
     color: "bg-green-50",
     iconColor: "bg-green-500"
@@ -76,7 +76,7 @@ export default function Features() {
               <h4 className="font-medium text-ink flex items-center gap-2">
                 <Zap className="w-4 h-4 text-accent" /> Focus Mode
               </h4>
-              <p className="text-sm text-ink/60 leading-relaxed">A workspace that feels like writing on a page. Students reflect on their own thinking and can see their own growth in Your Writing Journey.</p>
+              <p className="text-sm text-ink/60 leading-relaxed">A workspace that feels like writing on a page. Students get guidance while developing their own writing, reflect on their process, and see their writing journey over time.</p>
             </div>
             <div className="space-y-4">
               <h4 className="font-medium text-ink flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function Features() {
               <h4 className="font-medium text-ink flex items-center gap-2">
                 <Search className="w-4 h-4 text-accent" /> Writing Insights
               </h4>
-              <p className="text-sm text-ink/60 leading-relaxed">Understand the process with a Writing Process Review. It offers evidence, not verdicts. You make the call and give targeted feedback.</p>
+              <p className="text-sm text-ink/60 leading-relaxed">Understand how a paper developed with a Writing Process Review. Review revisions and the questions students asked the coach, then make informed decisions without relying on an AI detector.</p>
             </div>
           </div>
         </div>

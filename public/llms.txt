@@ -18,9 +18,26 @@
 ## Approach
 Arwright focuses on teaching responsible AI use rather than catching students. AI detectors tend to create mistrust; Arwright gives teachers a picture of real student growth. Our guiding principle: measure the work, not the student.
 
+## FAQ
+Does Arwright write essays for students?
+No. The AI coach asks questions, points to places in the draft, and suggests next steps. Students do the writing, and the coach never writes text into the essay.
+
+Is Arwright an AI detector?
+No. Arwright shows how a piece of writing developed. That process is evidence for the teacher, and the teacher makes the call. The Writing Process Review never determines misconduct.
+
+What can teachers see about the writing process?
+For students in their own classes, teachers can see a replay of how the paper developed, its revisions, any pasted text, the questions the student asked the AI coach, and the student's own reflection.
+
+Can students see how their writing develops over time?
+Yes. Your Writing Journey gives each student a page with one chapter per paper: how they built it, what they asked the coach about, their first and final versions, and their reflection. It shares observations only, with no scores, rankings, or comparisons with classmates.
+
+## Accessibility
+We aim to meet WCAG 2.1 Level AA on this website and in the Arwright app, and we welcome feedback at hello@arwrightlearning.com.
+
 ## Status
 Live and ready for the pilot stage, starting with high schools. A study of how students use AI in writing is being prepared for IRB submission.
 
 ## Links
 - Website: https://arwrightlearning.com
 - Contact: hello@arwrightlearning.com
+- Demo: https://app.arwrightlearning.com/?demo=true

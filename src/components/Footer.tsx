@@ -18,8 +18,8 @@ export default function Footer() {
           <a href="/about" className="hover:text-brand-blue transition-colors">About</a>
           <Link to="/privacy" className="hover:text-brand-blue transition-colors">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-brand-blue transition-colors">Terms of Service</Link>
-          <a href="#" className="hover:text-brand-blue transition-colors">Accessibility</a>
-          <a href="#" className="hover:text-brand-blue transition-colors">Support</a>
+          <a href="/about#accessibility" className="hover:text-brand-blue transition-colors">Accessibility</a>
+          <a href="mailto:hello@arwrightlearning.com" className="hover:text-brand-blue transition-colors">Support</a>
         </div>
 
         <div className="text-[10px] uppercase tracking-widest font-semibold text-ink/30">
