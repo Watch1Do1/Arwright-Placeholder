@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import SeeItInAction from './SeeItInAction';
+import Homeschool from './Homeschool';
 import { PenTool, Eye, GraduationCap, ShieldCheck, Zap, History, FileText, Search } from 'lucide-react';
 
 const features = [
@@ -107,6 +108,7 @@ export default function Features() {
             </div>
           </div>
         </div>
+        <Homeschool />
         <SeeItInAction />
       </div>
     </section>
