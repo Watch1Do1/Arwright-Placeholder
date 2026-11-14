@@ -82,14 +82,14 @@ export default function Homeschool() {
             <p className="font-serif text-3xl text-ink">
               $49 a year for up to 4 students
             </p>
-            <p className="text-sm text-ink/60">Regular price $99 a year for up to 4 students.</p>
+            <p className="text-sm text-ink/60">Regular price $99 a year for 2 to 4 students. Just one student? It's $75 a year.</p>
           </div>
 
           <div className="space-y-2 text-sm text-ink/70">
             <h4 className="font-medium text-ink">Bigger families</h4>
             <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 max-w-md">
               {[
-                ['Students 1–4', '$49 founding ($99 regular)'],
+                ['Students 1–4', '$49 founding ($99 regular, $75 for one student)'],
                 ['Students 5–8', '+$24.99 founding (+$49 regular)'],
                 ['Students 9–12', '+$12.50 founding (+$24.99 regular)'],
               ].map(([who, price]) => (
