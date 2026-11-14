@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { motion } from 'motion/react';
 import { ClipboardList, MessageCircleQuestion, ListChecks, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -79,15 +80,31 @@ export default function Homeschool() {
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-accent">Founding-family pricing</p>
             <p className="font-serif text-3xl text-ink">
-              $49 for your first year
+              $49 a year for up to 4 students
             </p>
-            <p className="text-sm text-ink/60">Regular price $99/year, up to 4 students.</p>
+            <p className="text-sm text-ink/60">Regular price $99 a year for up to 4 students.</p>
+          </div>
+
+          <div className="space-y-2 text-sm text-ink/70">
+            <h4 className="font-medium text-ink">Bigger families</h4>
+            <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 max-w-md">
+              {[
+                ['Students 1–4', '$49 founding ($99 regular)'],
+                ['Students 5–8', '+$24.99 founding (+$49 regular)'],
+                ['Students 9–12', '+$12.50 founding (+$24.99 regular)'],
+              ].map(([who, price]) => (
+                <Fragment key={who}>
+                  <dt className="text-ink/60">{who}:</dt>
+                  <dd className="text-ink">{price}</dd>
+                </Fragment>
+              ))}
+            </dl>
           </div>
 
           <p className="text-sm text-ink/70 leading-relaxed">
             Arwright for families is an annual plan, built for writing all year long. We're opening the homeschool beta
-            to the first 20 families, and they keep a founding price of $89 a year for as long as they continue
-            each year without a gap.
+            to the first 20 families, and they keep founding prices for as long as they continue each year without a
+            gap.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6 text-sm text-ink/60 leading-relaxed">
@@ -104,9 +121,9 @@ export default function Homeschool() {
               <div className="space-y-2">
                 <h4 className="font-medium text-ink">Billing</h4>
                 <p>
-                  Founding-family plans are billed once a year by invoice. Nothing renews or charges automatically.
-                  Each year starts only when you pay that year's invoice. To stop, just don't pay the next invoice, or
-                  email hello@arwrightlearning.com.
+                  Founding-family plans are billed once a year by invoice, based on how many students are in your
+                  family. Nothing renews or charges automatically. Each year starts only when you pay that year's
+                  invoice. To stop, just don't pay the next invoice, or email hello@arwrightlearning.com.
                 </p>
               </div>
               <div className="space-y-2">
