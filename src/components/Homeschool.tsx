@@ -82,7 +82,7 @@ export default function Homeschool() {
             <p className="font-serif text-3xl text-ink">
               $49 a year for up to 4 students
             </p>
-            <p className="text-sm text-ink/60">Regular price $99 a year for 2 to 4 students. Just one student? It's $75 a year.</p>
+            <p className="text-sm text-ink/60">Regular price $99 a year for 2 to 4 students. Just one student? It's $75 a year. Prices in USD, plus any applicable tax.</p>
           </div>
 
           <div className="space-y-2 text-sm text-ink/70">
