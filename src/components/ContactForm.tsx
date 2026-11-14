@@ -105,7 +105,7 @@ export default function ContactForm() {
           {isHomeschool ? (
             <p className="text-xl text-ink/60 font-serif">
               Homeschooling a writer 13 or older? <br className="hidden md:block" />
-              Join the founding family beta and we'll set up your family account.
+              Join the founding family beta and we'll help you get your family set up.
             </p>
           ) : (
             <p className="text-xl text-ink/60 font-serif">

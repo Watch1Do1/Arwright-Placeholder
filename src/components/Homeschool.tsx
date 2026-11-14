@@ -24,7 +24,7 @@ const benefits = [
     icon: ListChecks,
   },
   {
-    title: 'Names removed before AI',
+    title: "Student's name removed before AI",
     description:
       "Before a student's writing is sent to our AI providers, we automatically replace the student's own name (as it appears on their account, including anywhere it appears in their writing), along with email addresses and U.S. phone numbers we detect. Other names or personal details a student types may still be sent, so we encourage students not to include them.",
     icon: ShieldCheck,
@@ -53,6 +53,10 @@ export default function Homeschool() {
           Arwright helps your student write with an AI coach that asks questions instead of writing the paper for them.
           You act as their teacher: you create assignments with your own rubrics, and you can see their drafting,
           revision, and AI use.
+        </p>
+        <p className="text-ink/70 leading-relaxed">
+          <span className="font-medium text-ink">How it works:</span> You create a family account, add each student (13
+          and up), and set up classes. Each student signs up with their own email and joins using your family code.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-8">
@@ -129,8 +133,8 @@ export default function Homeschool() {
 
         <div className="space-y-3">
           <p className="text-ink/70">
-            The homeschool beta is open to students 13 and up. Join the founding family beta and we'll set up your
-            family account.
+            The homeschool beta is open to students 13 and up. Join the founding family beta and we'll help you get
+            your family set up.
           </p>
           <a
             href="#contact"
