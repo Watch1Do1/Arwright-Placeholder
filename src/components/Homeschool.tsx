@@ -1,10 +1,26 @@
-import { Fragment } from 'react';
 import { motion } from 'motion/react';
 import { ClipboardList, MessageCircleQuestion, ListChecks, ShieldCheck, Sparkles, ArrowRight } from 'lucide-react';
 
 // Event the contact form listens for, so "Join the founding family beta" opens the form
 // with the homeschool inquiry type already selected.
 export const SELECT_INQUIRY_TYPE_EVENT = 'arwright:select-inquiry-type';
+
+// Yearly totals (founding / regular), cumulative. Pending Joseph's confirmation; change only this array.
+const FAMILY_YEARLY_TOTALS = [
+  { students: '1 student', founding: '$37.50', regular: '$75' },
+  { students: '2–4 students', founding: '$49', regular: '$99' },
+  { students: '5–8 students', founding: '$73.99', regular: '$148' },
+  { students: '9–12 students', founding: '$86.49', regular: '$172.99' },
+] as const;
+
+// Survey wording: Joseph is deciding whether surveys are optional or required.
+// Add a sentence to this list; it renders in order, before the quotes paragraph.
+const FOUNDING_IN_RETURN_SURVEY = [
+  'A few short surveys during the year about how Arwright is working for your family.',
+] as const;
+
+const FOUNDING_IN_RETURN_QUOTES =
+  "With your written permission, we may quote your feedback by first name or anonymously, whichever you prefer. You can always say no to quotes and still keep your founding price. Quotes come from parents only, never from students, and we never publish a student's writing. Published quotes will note that the family receives founding pricing.";
 
 const benefits = [
   {
@@ -27,7 +43,7 @@ const benefits = [
   {
     title: "Student's name removed before AI",
     description:
-      "Before a student's writing is sent to our AI providers, we automatically replace the student's own name (as it appears on their account, including anywhere it appears in their writing), along with email addresses and U.S. phone numbers we detect. Other names or personal details a student types may still be sent, so we encourage students not to include them.",
+      "Before a student's writing is sent to our AI providers, we automatically replace the student's own name (as it appears on their account, including anywhere it appears in their writing), along with email addresses and U.S. phone numbers we detect. Other names or personal details a student types may still be sent, so we encourage students not to include them. Automatic detection may not catch everything.",
     icon: ShieldCheck,
   },
 ];
@@ -80,60 +96,69 @@ export default function Homeschool() {
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-accent">Founding-family pricing</p>
             <p className="font-serif text-3xl text-ink">
-              $49 a year for up to 4 students
+              Founding price: $49 a year for up to 4 students (first 20 families)
             </p>
             <p className="text-sm text-ink/60">Regular price $99 a year for 2 to 4 students. Just one student? It's $37.50 a year founding ($75 regular). Prices in USD, plus any applicable tax.</p>
           </div>
 
           <div className="space-y-2 text-sm text-ink/70">
-            <h4 className="font-medium text-ink">Bigger families</h4>
-            <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 max-w-md">
-              {[
-                ['Students 1–4', '$49 founding ($37.50 for one student) / $99 regular ($75 for one student)'],
-                ['Students 5–8', '+$24.99 founding (+$49 regular)'],
-                ['Students 9–12', '+$12.50 founding (+$24.99 regular)'],
-              ].map(([who, price]) => (
-                <Fragment key={who}>
-                  <dt className="text-ink/60">{who}:</dt>
-                  <dd className="text-ink">{price}</dd>
-                </Fragment>
-              ))}
-            </dl>
+            <h4 className="font-medium text-ink">Yearly totals</h4>
+            <div className="overflow-x-auto">
+              <table className="w-full max-w-lg text-left">
+                <thead>
+                  <tr className="text-ink/60 border-b border-ink/10">
+                    <th className="font-medium py-1.5 pr-4">Students</th>
+                    <th className="font-medium py-1.5 pr-4">Founding (per year)</th>
+                    <th className="font-medium py-1.5">Regular (per year)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {FAMILY_YEARLY_TOTALS.map((row) => (
+                    <tr key={row.students} className="text-ink">
+                      <td className="py-1.5 pr-4">{row.students}</td>
+                      <td className="py-1.5 pr-4">{row.founding}</td>
+                      <td className="py-1.5">{row.regular}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <p className="text-sm text-ink/70 leading-relaxed">
             Arwright for families is an annual plan, built for writing all year long. We're opening the homeschool beta
-            to the first 20 families, and they keep founding prices for as long as they continue each year without a
-            gap.
+            to the first 20 families who pay their first invoice. Founding families keep founding prices as long as they
+            pay each yearly renewal invoice by the end of its 14-day grace period. Regular prices may change in future
+            years.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6 text-sm text-ink/60 leading-relaxed">
             <div className="space-y-2">
               <h4 className="font-medium text-ink">What we ask in return</h4>
               <p>
-                A few short surveys during the year about how Arwright is working for your family. With your written
-                permission, we may quote your feedback by first name or anonymously, whichever you prefer. You can
-                always say no to quotes and still keep your founding price. Quotes come from parents only, never from
-                students, and we never publish a student's writing.
+                {FOUNDING_IN_RETURN_SURVEY.join(' ')} {FOUNDING_IN_RETURN_QUOTES}
               </p>
             </div>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <h4 className="font-medium text-ink">Billing</h4>
-                <p>
-                  Founding-family plans are billed once a year by invoice, based on how many students are in your
-                  family. Nothing renews or charges automatically. Each year starts only when you pay that year's
-                  invoice. To stop, just don't pay the next invoice, or email hello@arwrightlearning.com.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <h4 className="font-medium text-ink">Refunds</h4>
-                <p>
-                  If Arwright isn't working for your family, email us within 30 days of paying for a full refund. After
-                  30 days, payments aren't refundable, but you keep access through the end of the year you paid for.
-                </p>
-              </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-ink">Refunds</h4>
+              <p>
+                If Arwright isn't working for your family, email us within 30 days of paying any invoice for a full
+                refund of that invoice. After 30 days, payments aren't refundable, but you keep access through the end
+                of the year you paid for.
+              </p>
             </div>
+          </div>
+
+          <div className="space-y-2 text-sm text-ink/60 leading-relaxed">
+            <h4 className="font-medium text-ink">Billing</h4>
+            <p>
+              All family plans are billed once a year by invoice, based on how many students are in your family (up to
+              12). Nothing renews or charges automatically: we email your next invoice about 30 days before your year
+              ends, and each year starts only when you pay it. If you add a student mid-year, we'll invoice a prorated
+              amount for the rest of that year. If a renewal invoice isn't paid, you get a 14-day grace period; after
+              that your family's account becomes read-only, and we don't delete your students' writing because a
+              payment is late. To stop, just don't pay the next invoice, or email hello@arwrightlearning.com.
+            </p>
           </div>
         </motion.div>
 
