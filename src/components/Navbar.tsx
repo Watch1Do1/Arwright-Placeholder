@@ -16,7 +16,7 @@ export default function Navbar() {
         <a href="#features" className="hover:text-accent transition-colors">Features</a>
         <a href="#students" className="hover:text-accent transition-colors">For Students</a>
         <a href="#teachers" className="hover:text-accent transition-colors">For Teachers</a>
-        <a href="#homeschool" className="hover:text-accent transition-colors">For Families</a>
+        <a href="#homeschool" className="hover:text-accent transition-colors">Homeschool</a>
         <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
       </div>
 

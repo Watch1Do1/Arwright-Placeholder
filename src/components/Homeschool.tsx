@@ -17,6 +17,7 @@ const FAMILY_YEARLY_TOTALS = [
 // Add a sentence to this list; it renders in order, before the quotes paragraph.
 const FOUNDING_IN_RETURN_SURVEY = [
   'A few short surveys during the year about how Arwright is working for your family.',
+  "Surveys are optional and won't affect your price.",
 ] as const;
 
 const FOUNDING_IN_RETURN_QUOTES =
