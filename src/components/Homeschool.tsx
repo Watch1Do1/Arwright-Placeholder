@@ -156,9 +156,10 @@ export default function Homeschool() {
               All family plans are billed once a year by invoice, based on how many students are in your family (up to
               12). Nothing renews or charges automatically: we email your next invoice about 30 days before your year
               ends, and each year starts only when you pay it. If you add a student mid-year, we'll invoice a prorated
-              amount for the rest of that year. If a renewal invoice isn't paid, you get a 14-day grace period; after
-              that your family's account becomes read-only, and we don't delete your students' writing because a
-              payment is late. To stop, just don't pay the next invoice, or email hello@arwrightlearning.com.
+              amount for the rest of that year. If a renewal invoice isn't paid, you get a 14-day grace period. After
+              that, the AI coach and adding students pause until you pay. Your students can still open, write, and
+              download their work, and nothing is deleted because a payment is late. To stop, just don't pay the next
+              invoice, or email hello@arwrightlearning.com.
             </p>
           </div>
         </motion.div>
