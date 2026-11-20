@@ -157,8 +157,9 @@ export default function Homeschool() {
               12). Nothing renews or charges automatically: we email your next invoice about 30 days before your year
               ends, and each year starts only when you pay it. If you add a student mid-year, we'll invoice a prorated
               amount for the rest of that year. If a renewal invoice isn't paid, you get a 14-day grace period. After
-              that, the AI coach and adding students pause until you pay. Your students can still open, write, and
-              download their work, and nothing is deleted because a payment is late. To stop, just don't pay the next
+              that, the AI coach, writing prompts, quizzes, submitting papers, and adding students pause until you pay.
+              Your students can still open, write, save, and download their work, and nothing is deleted because a
+              payment is late. To stop, just don't pay the next
               invoice, or email hello@arwrightlearning.com.
             </p>
           </div>
