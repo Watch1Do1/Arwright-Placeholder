@@ -1,19 +1,49 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import Markdown, { type Components } from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Footer from './Footer';
 
 interface LegalPageProps {
-  title: string;
+  markdown: string;
 }
 
-// Placeholder page for legal documents. The final text will replace the draft notice
-// once it has been approved.
-export default function LegalPage({ title }: LegalPageProps) {
-  // Start at the top when arriving from a footer link
+const components: Components = {
+  a({ href, children }) {
+    const className = 'text-ink underline underline-offset-4 hover:text-accent transition-colors';
+    if (href?.startsWith('/')) {
+      return (
+        <Link to={href} className={className}>
+          {children}
+        </Link>
+      );
+    }
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  },
+  table({ children }) {
+    return (
+      <div className="overflow-x-auto my-6 border border-ink/10 rounded-2xl">
+        <table className="w-full min-w-[32rem] text-sm text-left border-collapse">{children}</table>
+      </div>
+    );
+  },
+};
+
+export default function LegalPage({ markdown }: LegalPageProps) {
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    const heading = markdown.match(/^#\s+(.+)$/m)?.[1]?.trim();
+    const previous = document.title;
+    if (heading) document.title = heading;
+    return () => {
+      document.title = previous;
+    };
+  }, [markdown]);
 
   return (
     <>
@@ -24,30 +54,13 @@ export default function LegalPage({ title }: LegalPageProps) {
         </Link>
       </header>
 
-      <main className="py-24 px-6">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <span className="inline-block px-3 py-1 bg-ink/5 text-ink/40 text-[10px] font-medium tracking-[0.2em] uppercase rounded-full">
-            Draft: pending final legal text
-          </span>
-
-          <h1 className="font-serif text-4xl md:text-6xl text-ink">{title}</h1>
-
-          <div className="p-8 bg-stone-50 rounded-3xl border border-ink/10 space-y-4 text-ink/60 leading-relaxed">
-            <p>
-              This page is a draft placeholder. Our final {title} is being prepared and will be
-              published here once it has been reviewed.
-            </p>
-            <p>
-              If you have questions in the meantime, please email{' '}
-              <a
-                href="mailto:hello@arwrightlearning.com"
-                className="text-ink underline underline-offset-4 hover:text-accent transition-colors"
-              >
-                hello@arwrightlearning.com
-              </a>
-              .
-            </p>
-          </div>
+      <main className="py-16 md:py-24 px-6">
+        <div className="max-w-3xl mx-auto space-y-12">
+          <article className="legal-doc">
+            <Markdown remarkPlugins={[remarkGfm]} components={components}>
+              {markdown}
+            </Markdown>
+          </article>
 
           <Link
             to="/"

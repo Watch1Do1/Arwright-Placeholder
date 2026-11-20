@@ -20,3 +20,43 @@
     @apply bg-paper text-ink font-sans antialiased;
   }
 }
+
+
+@layer components {
+  .legal-doc {
+    @apply text-ink/80 leading-relaxed;
+  }
+  .legal-doc h1 {
+    @apply font-serif text-4xl md:text-5xl text-ink tracking-tight mb-6;
+  }
+  .legal-doc h2 {
+    @apply font-serif text-2xl text-ink mt-12 mb-4;
+  }
+  .legal-doc p {
+    @apply mb-4;
+  }
+  .legal-doc ul {
+    @apply list-disc pl-6 mb-4 space-y-2;
+  }
+  .legal-doc li {
+    @apply leading-relaxed;
+  }
+  .legal-doc li > p {
+    @apply mb-0;
+  }
+  .legal-doc strong {
+    @apply font-medium text-ink;
+  }
+  .legal-doc hr {
+    @apply border-0 border-t border-ink/10 my-10;
+  }
+  .legal-doc thead th {
+    @apply font-medium text-ink py-3 px-4 border-b border-ink/15 align-bottom bg-stone-50;
+  }
+  .legal-doc tbody td {
+    @apply py-3 px-4 border-b border-ink/8 align-top;
+  }
+  .legal-doc tbody tr:last-child td {
+    @apply border-b-0;
+  }
+}
